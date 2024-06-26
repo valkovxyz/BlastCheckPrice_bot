@@ -8,11 +8,11 @@ const bot = new Telegraf('6885029786:AAGaA5Vtf1vqd_2izTs_-KPEU7H5PqJ-k-M');
 const alertPrices = [0.03, 0.035, 0.04, 0.045, 0.05, 0.055, 0.06, 0.065, 0.07];
 let triggeredPrices = [];
 
-// Функция для получения текущей цены пары BLAST/USDT
+// Функция для получения текущей цены пары BLAST/USDT с CoinGecko
 async function getPrice() {
-    const response = await fetch('https://api.example.com/price?symbol=BLASTUSDT');
+    const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=blast&vs_currencies=usd');
     const data = await response.json();
-    return data.price;
+    return data.blast.usd;
 }
 
 // Обработка команды /start
